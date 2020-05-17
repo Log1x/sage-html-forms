@@ -36,6 +36,8 @@ class HtmlForms extends Component
         $hidden = null
     ) {
         $this->form = hf_get_form($form);
+        $this->hidden = $hidden;
+
         $this->form->attributes = collect($this->form->messages)->merge(
             collect($messages)->keyBy(function ($value, $key) {
                 return Str::snake($key);

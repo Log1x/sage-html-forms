@@ -38,7 +38,7 @@ jobs:
       - php/load-cache:
           key: v1
       - run: composer install -n --prefer-dist
-      - run: composer test
+      - run: composer lint
       - php/save-cache:
           key: v1
 

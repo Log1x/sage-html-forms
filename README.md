@@ -35,7 +35,13 @@ You can leave the "Form code" blank as it will not be used if a corresponding Bl
 
 ### Creating a View
 
-Once your form is created, create a Blade view in `views/forms/contact-us.blade.php` where `contact-us` is equal to your form's slug.
+Once your form is created, simply generate a view using the slug assigned to your form:
+
+```bash
+$ wp acorn make:form contact-us
+```
+
+You will find the generated form view in `resources/views/forms/contact-us.blade.php` containing a simple form component:
 
 ```php
 <x-html-forms :form="$form" class="my-form">
@@ -47,7 +53,7 @@ Once your form is created, create a Blade view in `views/forms/contact-us.blade.
   >
 
   <input
-    name="cool_email"
+    name="emailAddress"
     type="email"
     placeholder="Email Address"
     required
@@ -60,7 +66,21 @@ Once your form is created, create a Blade view in `views/forms/contact-us.blade.
 </x-html-forms>
 ```
 
-...and you're done. Form action variables simply reference the input `name` so `[NAME]` and `[COOL_EMAIL]` will now be readily available.
+When HTML Forms processes "Form Actions" – it simply fetches each input name to create the usable variables.
+
+That being said, the default view would provide `[NAME]` and `[EMAILADDRESS]`.
+
+#### Error Messages
+
+Outside of defining your error messages on the options page, you can optionally provide them to the `<x-html-forms />` component directly:
+
+```php
+<x-html-forms
+  :form="$form"
+  :messages="['success' => 'Thank you!', 'error' => 'Yikes! Try again.']"
+  class="my-form"
+/>
+```
 
 ## Bug Reports
 

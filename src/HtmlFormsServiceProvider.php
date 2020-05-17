@@ -5,6 +5,7 @@ namespace Log1x\HtmlForms;
 use Roots\Acorn\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Log1x\HtmlForms\HtmlForms;
+use Log1x\HtmlForms\Console\FormMakeCommand;
 use Log1x\HtmlForms\View\Components\HtmlForms as HtmlFormsComponent;
 
 class HtmlFormsServiceProvider extends ServiceProvider
@@ -28,6 +29,10 @@ class HtmlFormsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->commands([
+            FormMakeCommand::class,
+        ]);
+
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'HtmlForms');
 
         $this->callAfterResolving(BladeCompiler::class, function ($view) {

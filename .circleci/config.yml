@@ -1,29 +1,52 @@
 version: 2.1
 
 orbs:
+  php: circleci/php@0.1
+
+# To be removed after https://github.com/CircleCI-Public/php-orb/pull/11
+executors:
   default:
-    executors:
-      php-73:
-        docker:
-          - image: 'circleci/php:7.3-stretch'
-    jobs:
-      build-php:
-        executor: php-73
-        steps:
-          - run: php -v
-          - checkout
-          - restore_cache:
-              keys:
-                - composer-v1-{{ checksum "composer.lock" }}
-                - composer-v1-
-          - run: composer install -n --prefer-dist --no-scripts --no-suggest
-          - run: composer lint
-          - save_cache:
-              key: composer-v1-{{ checksum "composer.lock" }}
-              paths:
-                - vendor
+    description: The official next-gen CircleCI PHP Docker image.
+    parameters:
+      tag:
+        description: The `cimg/php` Docker image version tag.
+        type: string
+    docker:
+      - image: 'cimg/php:<< parameters.tag >>'
+
+# To be removed after https://github.com/CircleCI-Public/php-orb/issues/23
+jobs:
+  build-php:
+    parameters:
+      version:
+        default: '7.4'
+        description: The `cimg/php` Docker image version tag.
+        type: string
+    executor:
+      name: default
+      tag: << parameters.version >>
+    steps:
+      # Because squizlabs/php_codesniffer requires ext-simplexml.
+      # To be removed after https://github.com/CircleCI-Public/cimg-php/pull/51
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y php<< parameters.version >>-xml
+      - run: php -v
+      - run: composer --version
+      # To be removed after https://github.com/CircleCI-Public/cimg-php/pull/52
+      - run: sudo chown $(whoami):$(whoami) ~/.composer
+      - checkout
+      - php/load-cache:
+          key: v1
+      - run: composer install -n --prefer-dist
+      - run: composer test
+      - php/save-cache:
+          key: v1
 
 workflows:
   build:
     jobs:
-      - default/build-php
+      - build-php:
+          name: build-php-<< matrix.version >>
+          matrix:
+            parameters:
+              version: ['7.4', '7.3', '7.2']

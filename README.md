@@ -4,7 +4,7 @@
 ![Build Status](https://img.shields.io/circleci/build/github/Log1x/sage-html-forms?style=flat-square)
 ![Total Downloads](https://img.shields.io/packagist/dt/log1x/sage-html-forms?style=flat-square)
 
-This is a simple package for [HTML Forms](https://github.com/ibericode/html-forms) that allows you to easily render forms using a corresponding Blade view (if one is present) with Sage 10.
+This is a simple package for the plugin [HTML Forms](https://github.com/ibericode/html-forms) that allows you to easily render forms using a corresponding Blade view (if one is present) with Sage 10.
 
 A few additional opinionated tweaks include:
 

@@ -17,17 +17,16 @@ class HtmlForms extends Component
     /**
      * The hidden view slot.
      *
-     * @return string
+     * @var string
      */
     public $hidden;
 
     /**
      * Create the component instance.
      *
-     * @param  string $title
-     * @param  string $subtitle
-     * @param  string $background
-     * @param  string $color
+     * @param  int    $form
+     * @param  array  $messages
+     * @param  string $hidden
      * @return void
      */
     public function __construct(

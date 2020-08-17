@@ -2,6 +2,8 @@
 
 namespace Log1x\HtmlForms;
 
+use Illuminate\Support\Str;
+
 use function Roots\view;
 
 class HtmlForms
@@ -14,7 +16,10 @@ class HtmlForms
     public function __construct()
     {
         $this->render();
-        $this->clean();
+
+        if (is_admin()) {
+            $this->cleanAdmin();
+        }
     }
 
     /**
@@ -31,7 +36,10 @@ class HtmlForms
                 return $html;
             }
 
-            return view('forms.' . $form->slug, ['form' => $form->ID])->render();
+            return view(
+                Str::start($form->slug, 'forms.'),
+                ['form' => $form->ID]
+            )->render();
         }, 10, 2);
     }
 
@@ -41,7 +49,7 @@ class HtmlForms
      *
      * @return void
      */
-    protected function clean()
+    protected function cleanAdmin()
     {
         add_filter('hf_admin_output_misc_settings', function () {
             echo '<style>.hf-sidebar { display: none; }</style>';
@@ -49,12 +57,13 @@ class HtmlForms
 
         add_filter('admin_menu', function () {
             remove_menu_page('html-forms');
-
-            array_push($GLOBALS['submenu']['options-general.php'], [
+            add_submenu_page(
+                'options-general.php',
+                'HTML Forms',
                 'HTML Forms',
                 'edit_forms',
-                admin_url('admin.php?page=html-forms'),
-            ]);
+                'html-forms'
+            );
         });
     }
 }

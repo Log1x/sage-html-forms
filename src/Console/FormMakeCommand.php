@@ -123,6 +123,54 @@ class FormMakeCommand extends GeneratorCommand
     }
 
     /**
+     * Clear the current line in console output.
+     *
+     * @return Command
+     */
+    public function clearLine()
+    {
+        if (! $this->output->isDecorated()) {
+            $this->output->writeln('');
+
+            return $this;
+        }
+
+        $this->output->write("\x0D");
+        $this->output->write("\x1B[2K");
+
+        return $this;
+    }
+
+    /**
+     * Run a task in the console.
+     *
+     * @param  string        $title
+     * @param  callable|null $task
+     * @param  string        $status
+     * @return mixed
+     */
+    protected function task($title, $task = null, $status = '...')
+    {
+        $title = Str::start($title, '<fg=blue;options=bold>➡</> ');
+
+        if (! $task) {
+            return $this->output->write("{$title}: <info>✔</info>");
+        }
+
+        $this->output->write("{$title}: <comment>{$status}</comment>");
+
+        try {
+            $status = $task() !== false;
+        } catch (\Exception $e) {
+            $this->clearLine()->line("{$title}: <fg=red;options=bold>x</>");
+
+            throw $e;
+        }
+
+        $this->clearLine()->line("{$title}: " . ($status ? '<info>✔</info>' : '<fg=red;options=bold>x</>'));
+    }
+
+    /**
      * Returns a shortened path.
      *
      * @param  string $path

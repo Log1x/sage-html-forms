@@ -3,10 +3,13 @@
 namespace Log1x\HtmlForms\Console;
 
 use Illuminate\Support\Str;
+use Log1x\HtmlForms\Concerns\Task;
 use Roots\Acorn\Console\Commands\GeneratorCommand;
 
 class FormMakeCommand extends GeneratorCommand
 {
+    use Task;
+
     /**
      * The console command signature.
      *

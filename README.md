@@ -14,6 +14,7 @@ A few additional opinionated tweaks include:
 ## Requirements
 
 - [Sage](https://github.com/roots/sage) >= 10.0
+- [HTML Forms](https://wordpress.org/plugins/html-forms/)
 - [PHP](https://secure.php.net/manual/en/install.php) >= 7.3
 - [Composer](https://getcomposer.org/download/)
 

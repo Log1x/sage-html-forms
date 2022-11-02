@@ -73,9 +73,9 @@ class FormListCommand extends Command
                 $value->ID,
                 $value->title,
                 $value->slug,
-                collect($value->settings['actions'])->map(function ($value) {
+                collect($value->settings['actions'] ?? [])->map(function ($value) {
                     return Str::title($value['type']);
-                })->implode(', '),
+                })->implode(', ') ?: 'None',
                 collect(
                     hf_get_form_submissions($value->ID)
                 )->count(),

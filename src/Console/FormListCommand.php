@@ -60,7 +60,11 @@ class FormListCommand extends Command
                 })->all(),
                 $submissions->map(function ($value) {
                     return array_values($value->data);
-                })->all()
+                })->map(function ($item) {
+                    return collect($item)->map(function ($value) {
+                        return Str::limit($value, 25);
+                    })->all();
+                })
             );
         }
 

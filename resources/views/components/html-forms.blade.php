@@ -5,5 +5,7 @@
     {!! $hidden !!}
   </div>
 
-  {!! $slot !!}
+  <div class="hf-fields-wrap">
+    {!! $slot !!}
+  </div>
 </form>

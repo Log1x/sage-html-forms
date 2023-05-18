@@ -8,7 +8,7 @@ This is a simple package for the [HTML Forms](https://wordpress.org/plugins/html
 
 A few additional opinionated tweaks include:
 
-- Moving the HTML Forms admin menu item to the Options submenu.
+- Optional moving the HTML Forms admin menu item to the Options submenu.
 - Hide the ads shown in the sidebar of the admin page.
 
 ## Requirements
@@ -81,6 +81,14 @@ Outside of defining your error messages on the options page, you can optionally 
   :messages="['success' => 'Thank you!', 'error' => 'Yikes! Try again.']"
   class="my-form"
 />
+```
+
+### Prevent moving Dashboard menu item
+
+By default the HTML Forms menu items is moved to the Options submenu. Prevent that by using the hook `hf_hide_admin_menu`:
+
+```php
+add_filter( 'hf_hide_admin_menu', '__return_false' );
 ```
 
 ## Bug Reports

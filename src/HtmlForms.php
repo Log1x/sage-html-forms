@@ -55,15 +55,17 @@ class HtmlForms
             echo '<style>.hf-sidebar { display: none; }</style>';
         });
 
-        add_filter('admin_menu', function () {
-            remove_menu_page('html-forms');
-            add_submenu_page(
-                'options-general.php',
-                'HTML Forms',
-                'HTML Forms',
-                'edit_forms',
-                'html-forms'
-            );
-        });
+        if ( apply_filters('hf_hide_admin_menu', true) ) {
+            add_filter('admin_menu', function () {
+                remove_menu_page('html-forms');
+                add_submenu_page(
+                    'options-general.php',
+                    'HTML Forms',
+                    'HTML Forms',
+                    'edit_forms',
+                    'html-forms'
+                );
+            });
+        }
     }
 }

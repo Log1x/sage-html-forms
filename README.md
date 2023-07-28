@@ -8,7 +8,7 @@ This is a simple package for the [HTML Forms](https://wordpress.org/plugins/html
 
 A few additional opinionated tweaks include:
 
-- Optional moving the HTML Forms admin menu item to the Options submenu.
+- Moving the HTML Forms admin menu item to the Options submenu.
 - Hide the ads shown in the sidebar of the admin page.
 
 ## Requirements

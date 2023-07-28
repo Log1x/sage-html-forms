@@ -85,10 +85,10 @@ Outside of defining your error messages on the options page, you can optionally 
 
 ### Prevent moving Dashboard menu item
 
-By default the HTML Forms menu items is moved to the Options submenu. Prevent that by using the hook `hf_hide_admin_menu`:
+By default the HTML Forms menu items is moved to the Options submenu. Prevent that by using the `hf_hide_admin_menu` hook:
 
 ```php
-add_filter( 'hf_hide_admin_menu', '__return_false' );
+add_filter('hf_hide_admin_menu', '__return_false');
 ```
 
 ## Bug Reports

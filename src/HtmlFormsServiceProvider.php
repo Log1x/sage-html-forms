@@ -4,7 +4,7 @@ namespace Log1x\HtmlForms;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Compilers\BladeCompiler;
-use Roots\Acorn\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Log1x\HtmlForms\HtmlForms;
 use Log1x\HtmlForms\Console\FormMakeCommand;
 use Log1x\HtmlForms\Console\FormListCommand;

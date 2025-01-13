@@ -40,7 +40,7 @@ class HtmlForms
                 Str::start($form->slug, 'forms.'),
                 ['form' => $form->ID]
             )->render();
-        }, 10, 2);
+        }, 5, 2);
     }
 
     /**

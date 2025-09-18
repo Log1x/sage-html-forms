@@ -90,13 +90,13 @@ class FormMakeCommand extends GeneratorCommand
      */
     protected function getViewStub()
     {
-        return __DIR__ . "/stubs/views/{$this->view}.stub";
+        return __DIR__."/stubs/views/{$this->view}.stub";
     }
 
     /**
      * Return the applications view path.
      *
-     * @param  string $name
+     * @param  string  $name
      * @return void
      */
     protected function getPaths()
@@ -144,9 +144,9 @@ class FormMakeCommand extends GeneratorCommand
     /**
      * Run a task in the console.
      *
-     * @param  string        $title
-     * @param  callable|null $task
-     * @param  string        $status
+     * @param  string  $title
+     * @param  callable|null  $task
+     * @param  string  $status
      * @return mixed
      */
     protected function task($title, $task = null, $status = '...')
@@ -167,14 +167,14 @@ class FormMakeCommand extends GeneratorCommand
             throw $e;
         }
 
-        $this->clearLine()->line("{$title}: " . ($status ? '<info>✔</info>' : '<fg=red;options=bold>x</>'));
+        $this->clearLine()->line("{$title}: ".($status ? '<info>✔</info>' : '<fg=red;options=bold>x</>'));
     }
 
     /**
      * Returns a shortened path.
      *
-     * @param  string $path
-     * @param  int $i
+     * @param  string  $path
+     * @param  int  $i
      * @return string
      */
     protected function shortenPath($path, $i = 3)

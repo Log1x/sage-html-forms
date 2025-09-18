@@ -3,11 +3,10 @@
 namespace Log1x\HtmlForms;
 
 use Illuminate\Support\Facades\Blade;
-use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Support\ServiceProvider;
-use Log1x\HtmlForms\HtmlForms;
-use Log1x\HtmlForms\Console\FormMakeCommand;
+use Illuminate\View\Compilers\BladeCompiler;
 use Log1x\HtmlForms\Console\FormListCommand;
+use Log1x\HtmlForms\Console\FormMakeCommand;
 use Log1x\HtmlForms\View\Components\HtmlForms as HtmlFormsComponent;
 
 class HtmlFormsServiceProvider extends ServiceProvider
@@ -20,7 +19,7 @@ class HtmlFormsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('Log1x\HtmlForms', function () {
-            return new HtmlForms();
+            return new HtmlForms;
         });
     }
 
@@ -40,7 +39,7 @@ class HtmlFormsServiceProvider extends ServiceProvider
             FormListCommand::class,
         ]);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'HtmlForms');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'HtmlForms');
 
         $this->callAfterResolving(BladeCompiler::class, function ($view) {
             $view->component(HtmlFormsComponent::class);

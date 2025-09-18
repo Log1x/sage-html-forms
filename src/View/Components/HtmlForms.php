@@ -24,9 +24,9 @@ class HtmlForms extends Component
     /**
      * Create the component instance.
      *
-     * @param  int    $form
+     * @param  int  $form
      * @param  array  $messages
-     * @param  string $hidden
+     * @param  string  $hidden
      * @return void
      */
     public function __construct(

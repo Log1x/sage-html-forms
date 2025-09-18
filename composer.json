@@ -24,10 +24,10 @@
     }
   },
   "require": {
-    "php": "^7.3|^8.0"
+    "php": "^8.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.5"
+    "laravel/pint": "^1.25"
   },
   "extra": {
     "acorn": {
@@ -35,10 +35,5 @@
         "Log1x\\HtmlForms\\HtmlFormsServiceProvider"
       ]
     }
-  },
-  "scripts": {
-    "lint": [
-      "phpcs --ignore=vendor,resources --extensions=php --standard=PSR12 ."
-    ]
   }
 }

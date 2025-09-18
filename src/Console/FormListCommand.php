@@ -2,8 +2,8 @@
 
 namespace Log1x\HtmlForms\Console;
 
-use Roots\Acorn\Console\Commands\Command;
 use Illuminate\Support\Str;
+use Roots\Acorn\Console\Commands\Command;
 
 class FormListCommand extends Command
 {

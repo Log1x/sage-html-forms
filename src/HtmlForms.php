@@ -25,14 +25,14 @@ class HtmlForms
     /**
      * Render forms using Blade if a corresponding view exists.
      *
-     * @param  string $html
-     * @param  \HTML_Forms\Form $form
+     * @param  string  $html
+     * @param  \HTML_Forms\Form  $form
      * @return string
      */
     protected function render()
     {
         add_filter('hf_form_html', function ($html, $form) {
-            if (! view()->exists('forms.' . $form->slug)) {
+            if (! view()->exists('forms.'.$form->slug)) {
                 return $html;
             }
 

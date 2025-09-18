@@ -69,7 +69,7 @@ You will find the generated form view in `resources/views/forms/contact-us.blade
 
 When HTML Forms processes "Form Actions" – it simply fetches each input name to create the usable variables.
 
-That being said, the default view would provide `[NAME]` and `[EMAILADDRESS]`.
+That being said, the default view would provide `[name]` and `[emailAddress]`.
 
 #### Error Messages
 
